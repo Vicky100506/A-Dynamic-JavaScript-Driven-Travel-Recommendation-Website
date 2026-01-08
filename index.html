@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Peach Travel</title>
+</head>
+<body>
+
+<script>
+const style = document.createElement("style");
+style.innerHTML = `
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600&display=swap');
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #fff4ee;
+  color: #3a2b2b;
+}
+
+/* ---------- NAVBAR ---------- */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 18px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 230, 220, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #f3c6b8;
+  z-index: 1000;
+}
+
+nav h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: #c75c3c;
+}
+
+nav a {
+  margin-left: 30px;
+  text-decoration: none;
+  color: #6b3f32;
+  font-weight: 500;
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #c75c3c;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ---------- MAIN ---------- */
+main {
+  padding-top: 120px;
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  padding: 140px 20px;
+  text-align: center;
+  background:
+    linear-gradient(rgba(255, 235, 225, 0.75), rgba(255, 235, 225, 0.75)),
+    url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  color: #c75c3c;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  max-width: 720px;
+  margin: auto;
+  color: #5c3a30;
+}
+
+/* ---------- SECTIONS ---------- */
+.section {
+  padding: 85px 75px;
+}
+
+.section h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  margin-bottom: 45px;
+  color: #c75c3c;
+}
+
+/* ---------- CARDS ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 38px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(199,92,60,0.18);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 65px rgba(199,92,60,0.28);
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 26px;
+}
+
+.card-content h4 {
+  margin: 0 0 10px;
+  font-size: 1.35rem;
+  color: #b24a32;
+}
+
+.card-content p {
+  color: #6b3f32;
+}
+
+/* ---------- FORM ---------- */
+form {
+  max-width: 440px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+input, textarea {
+  padding: 16px;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  border: 1px solid #f0c5b7;
+  outline: none;
+  background: #fffaf7;
+}
+
+button {
+  padding: 16px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(90deg, #f4a088, #c75c3c);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+`;
+document.head.appendChild(style);
+
+
+const nav = document.createElement("nav");
+nav.innerHTML = `
+  <h1>Peach Travel</h1>
+  <div>
+    <a href="#" onclick="home()">Home</a>
+    <a href="#" onclick="about()">About</a>
+    <a href="#" onclick="contact()">Contact</a>
+  </div>
+`;
+document.body.appendChild(nav);
+
+
+const main = document.createElement("main");
+document.body.appendChild(main);
+
+
+function home() {
+  main.innerHTML = `
+    <section class="hero">
+      <h2>Warm Journeys, Timeless Places</h2>
+      <p>Experience the world’s most beautiful destinations through a refined peach-toned travel experience.</p>
+    </section>
+
+    <section class="section">
+      <h3>Top Destinations</h3>
+      <div class="cards">
+        ${card("Dubai", "https://images.unsplash.com/photo-1512453979798-5ea266f8880c", "Luxury skyline & desert elegance")}
+        ${card("Japan", "https://images.unsplash.com/photo-1549693578-d683be217e58", "Tradition meets modern innovation")}
+        ${card("Switzerland", "https://images.unsplash.com/photo-1501785888041-af3ef285b470", "Alpine serenity & lakes")}
+        ${card("Germany", "https://images.unsplash.com/photo-1467269204594-9661b134dd2b", "Historic charm & engineering")}
+        ${card("United Kingdom", "https://images.unsplash.com/photo-1505761671935-60b3a7427bad", "Royal heritage & culture")}
+      </div>
+    </section>
+  `;
+}
+
+
+function about() {
+  main.innerHTML = `
+    <section class="section">
+      <h3>About Peach Travel</h3>
+      <p>
+        Peach Travel is a modern travel recommendation platform designed with a warm,
+        elegant peach color palette and premium user experience.
+      </p>
+      <p>
+        The entire website is dynamically generated using JavaScript, including all
+        HTML structure and CSS styling.
+      </p>
+    </section>
+  `;
+}
+
+
+function contact() {
+  main.innerHTML = `
+    <section class="section">
+      <h3>Contact Us</h3>
+      <form onsubmit="send(event)">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="4" placeholder="Your Message"></textarea>
+        <button>Send Message</button>
+      </form>
+    </section>
+  `;
+}
+
+function send(e) {
+  e.preventDefault();
+  alert("🍑 Thank you! Your message has been sent.");
+}
+
+
+function card(title, img, desc) {
+  return `
+    <div class="card">
+      <img src="${img}">
+      <div class="card-content">
+        <h4>${title}</h4>
+        <p>${desc}</p>
+      </div>
+    </div>
+  `;
+}
+
+
+home();
+</script>
+
+</body>
+</html>
